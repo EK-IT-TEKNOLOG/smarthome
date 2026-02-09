@@ -1,6 +1,7 @@
 # https://docs.micropython.org/en/latest/library/espnow.html
 import network
 import espnow
+import binascii
 
 # A WLAN interface must be active to send()/recv()
 station = network.WLAN(network.STA_IF)
@@ -12,6 +13,7 @@ esp_now.active(True)
 while True:
     host, msg = esp_now.recv()
     if msg:             # msg == None if timeout in recv()
-        print(host, msg)
+        print(binascii.hexlify(host), msg)
         if msg == b'end':
+
             break
