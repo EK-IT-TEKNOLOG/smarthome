@@ -433,10 +433,15 @@ if show_broadcast_messages > 1:        # Only 0: no show, 1: show
 broadcast_interval = eeprom.read_byte(EEPROM_BROADCAST_INTERVAL)
 
 # Load the user name
-user_name = eeprom.read_string(EEPROM_USER_NAME)
+user_name_ee = eeprom.read_string(EEPROM_USER_NAME)
+if user_name_ee[0] == b'\xc3':
+    user_name = user_name[0:20]
+    eeprom.write_string(EEPROM_USER_NAME, user_name)
+else:
+    user_name = user_name_ee
 if len(user_name) > 20:                # Trunc a user name longer than 20 chars
     user_name = user_name[0:20]
-eeprom.write_byte(EEPROM_USER_NAME, 20) # Also set it to max 20
+    eeprom.write_byte(EEPROM_USER_NAME, 20) # Also set it to max 20
 
 # Load receivers' MAC addresses into list and print to dashboard
 if MAX_NUMBER_RECEIVERS > 18:
@@ -537,4 +542,5 @@ while True:
     
     # Check if Ctrl-C is pressed
     ctrlC()
+
 
