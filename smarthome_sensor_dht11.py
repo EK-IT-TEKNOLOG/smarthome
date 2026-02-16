@@ -86,7 +86,7 @@ while True:
 
     # Send data if there is a change (this principle saves power)
     if bat_pct != prev_bat_pct or sensor_value_temp != prev_sensor_value_temp or sensor_value_hum != prev_sensor_value_hum:
-        data_string = str(time.ticks_ms()) + '|' + str(bat_pct) + '|' + str(sensor_value_temp) + '|' + str(sensor_value_hum) # The data to send. CHANGE IT!
+        data_string = 'JERES NAVN' + '|' + str(time.ticks_ms()) + '|' + str(bat_pct) + '|' + str(sensor_value_temp) + '|' + str(sensor_value_hum) # The data to send. CHANGE IT!
         
         print("Sending: " + data_string)
         try:
@@ -99,3 +99,4 @@ while True:
         prev_sensor_value_temp = sensor_value_temp
         prev_sensor_value_hum = sensor_value_hum
     
+
