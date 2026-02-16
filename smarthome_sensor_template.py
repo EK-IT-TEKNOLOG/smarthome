@@ -111,7 +111,7 @@ while True:
     sensor_value = 0                   # Replace with the specific way to interface with the sensor here
 
     # Send data if there is a change (this principle saves power)
-    if bat_pct == prev_bat_pct or sensor_value != prev_sensor_value:
+    if bat_pct != prev_bat_pct or sensor_value != prev_sensor_value:
         data_string = pack_data(sensor_mac_address, sensor_id, bat_pct, sensor_value)
         
         print("Sending: " + data_string)
@@ -133,3 +133,4 @@ while True:
         
     # Blink on LED
     blink_led_on()
+
