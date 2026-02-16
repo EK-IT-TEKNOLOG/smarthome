@@ -82,6 +82,7 @@ def blink_led_on():
                   
 def pack_data(mac, sid, bp, val):
     string = "0000"                    # The frame version number, four digits
+    string += '|' + 'JERES NAVN'
     string += '|' + mac
     string += '|' + sid
     string += '|' + str(time.ticks_ms())
@@ -133,4 +134,5 @@ while True:
         
     # Blink on LED
     blink_led_on()
+
 
