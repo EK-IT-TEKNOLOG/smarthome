@@ -39,7 +39,10 @@ while True:
     #print(start_time, time.ticks_ms(),time.ticks_diff(start_time, time.ticks_ms()))
     if abs(time.ticks_diff(time.ticks_ms(), start_time)) > threshold:
         print('[+] Activating actuators')
-        esp_now.send(peer, b'ACTIVATE')
+        try:
+            esp_now.send(peer, [b'ACTIVATE', b'DEACTIVATE'][random.randint(0,1)])
+        except:
+            pass
         start_time = time.ticks_ms()
         get_mac_address()
 
