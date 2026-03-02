@@ -496,7 +496,7 @@ while True:
     if msg:
         msg = msg.decode("utf-8")
         mac_addr = misc.mac_addr_bytestr_to_str(host)
-        if msg[0] == '*':              # By design, KEA ITT, is the first char of a broadcast messages an *
+        if msg[0] == '*':              # By design, EK ITT, is the first char of a broadcast messages an *
             if show_broadcast_messages == 1: # Only show broadcast messages if wanted. Control in Configuration
                 lcd.print_received_frame(mac_addr, msg)
                 print("Broadcast " + mac_addr + "  " + msg[1:]) # Remove the broadcast identifier *
@@ -542,5 +542,6 @@ while True:
     
     # Check if Ctrl-C is pressed
     ctrlC()
+
 
 
