@@ -4,8 +4,11 @@
 mac_addr_receiver = []                 # The list holding the MAC address of the receivers
 #Tilføj mac adresser på jeres styringer her
 sirene = b'\x12\x23\x34\x45'
+#Tilføj mac adresser på jeres sensorer her
 flammesensor = b'\x12\x23\x34\x45'
 #.... Indsæt flere her
+#Indsæt styringer som peers:
+en.esp_now_add_mac_address(sirene)
 
 #smarthome_main.py l. 496:
     if msg:
@@ -23,5 +26,5 @@ flammesensor = b'\x12\x23\x34\x45'
             if host == flammesensor:
                 print('[+] Got data from flamesensor')
                 if data_from_msg[3]: #Make sure you change this to match your data
-                    esp_now.send(sirene, b'ACTIVATE') #Or some other message that you want to use
+                    en.esp_now_send_message(sirene, b'ACTIVATE') #Or some other message that you want to use
 
